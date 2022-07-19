@@ -1,22 +1,18 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { AppRoutes } from './constants';
+import { Categories, ErrorPage, Game, Main, Results, Settings } from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path={AppRoutes.MAIN} element={<Main />} />
+      <Route path={AppRoutes.CATEGORIES} element={<Categories />} />
+      <Route path={AppRoutes.GAME} element={<Game />} />
+      <Route path={AppRoutes.RESULTS} element={<Results />} />
+      <Route path={AppRoutes.SETTINGS} element={<Settings />} />
+      <Route path={AppRoutes.ERROR} element={<ErrorPage />} />
+    </Routes>
   );
 }
 
