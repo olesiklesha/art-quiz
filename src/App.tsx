@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './constants';
 import { Categories, ErrorPage, Game, Main, Results, Settings } from './pages';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path={AppRoutes.MAIN} element={<Main />} />
@@ -14,6 +14,6 @@ function App() {
       <Route path={AppRoutes.ERROR} element={<ErrorPage />} />
     </Routes>
   );
-}
+};
 
 export default App;
