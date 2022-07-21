@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './constants';
 import { Categories, ErrorPage, Game, Main, Results, Settings } from './pages';
-import AppOutlet from './components/App-outlet';
+import { AppOutlet } from './components';
 
 const App = () => {
   return (

@@ -1,3 +1,3 @@
-export { default as Header } from './App-header';
+export { default as AppHeader } from './App-header';
 export { default as SettingsBtn } from './Settings-btn';
-export { default as Switcher } from './App-outlet';
+export { default as AppOutlet } from './App-outlet';
