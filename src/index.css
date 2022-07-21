@@ -20,3 +20,7 @@ body {
 #root {
   display: flex;
 }
+
+.active {
+  filter: brightness(0) saturate(100%) invert(81%) sepia(98%) saturate(2319%) hue-rotate(295deg) brightness(105%) contrast(101%);
+}

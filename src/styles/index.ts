@@ -49,6 +49,7 @@ export const BtnClose = styled(SmallIconBtn)`
 export const Wrapper = styled.div`
   padding: 0 1rem;
   height: 100%;
+  width: 100%;
 
   @media (min-width: 520px) {
     padding: 0 2rem;
