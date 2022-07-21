@@ -7,7 +7,8 @@ const App = () => {
   return (
     <Routes>
       <Route path={AppRoutes.MAIN} element={<Main />} />
-      <Route path={AppRoutes.CATEGORIES} element={<Categories />} />
+      <Route path={AppRoutes.ART} element={<Categories />} />
+      <Route path={AppRoutes.PIC} element={<Categories />} />
       <Route path={AppRoutes.GAME} element={<Game />} />
       <Route path={AppRoutes.RESULTS} element={<Results />} />
       <Route path={AppRoutes.SETTINGS} element={<Settings />} />

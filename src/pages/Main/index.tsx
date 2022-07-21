@@ -1,10 +1,26 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, BtnGroup, MainContainer, Header, Section, Logo } from './styles';
+import { SettingsBtn } from '../../components';
+import { AppRoutes } from '../../constants';
+import { Wrapper, NavBtn } from '../../styles';
 
 const Main = () => {
   return (
     <Container>
-      <div>this is main page</div>
+      <Wrapper>
+        <Header>
+          <SettingsBtn />
+        </Header>
+        <MainContainer>
+          <Section>
+            <Logo />
+            <BtnGroup>
+              <NavBtn to={AppRoutes.ART}>Artist quiz</NavBtn>
+              <NavBtn to={AppRoutes.PIC}>Picture quiz</NavBtn>
+            </BtnGroup>
+          </Section>
+        </MainContainer>
+      </Wrapper>
     </Container>
   );
 };
