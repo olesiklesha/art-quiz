@@ -1,9 +1,10 @@
 export enum AppRoutes {
   MAIN = '/',
-  ART = '/artist-quiz',
-  PIC = '/picture-quiz',
+  APP = '/app',
+  ART = '/app/artist-quiz',
+  PIC = '/app/picture-quiz',
   GAME = '/quiz',
-  RESULTS = '/results',
+  RESULTS = '/app/results',
   ERROR = '*',
   SETTINGS = 'settings',
 }
