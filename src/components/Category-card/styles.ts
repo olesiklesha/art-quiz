@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// const CARD_WIDTH = 150;
-// const CONTAINER_WIDTH = 328;
-
 export const CategoryContainer = styled(Link)`
   display: block;
   position: relative;
@@ -16,11 +13,16 @@ export const CategoryContainer = styled(Link)`
   text-decoration: none;
 `;
 
-export const CategoryImage = styled.div`
+interface CategoryImageProps {
+  src: string;
+}
+
+export const CategoryImage = styled.div<CategoryImageProps>`
   height: 164px;
   width: 100%;
   background-position: center;
   background-size: cover;
   border-radius: 20px;
   background-color: #c06e6e;
+  background-image: url(${(p) => `../${p.src}.jpg`});
 `;

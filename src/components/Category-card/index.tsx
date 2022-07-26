@@ -7,7 +7,7 @@ const CategoryCard: FC<ICategory> = ({ name, game, src, isNew, done }) => {
   return (
     <CategoryContainer to={AppRoutes.GAME}>
       {name}
-      <CategoryImage />
+      <CategoryImage src={src} />
     </CategoryContainer>
   );
 };
