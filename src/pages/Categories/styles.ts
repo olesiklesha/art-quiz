@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  //padding: 0 16px 5px 16px;
+  padding: 16px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 20px;
   width: 100%;
+  overflow-y: scroll;
+  height: calc(100vh - 160px);
   //margin-bottom: 75px;
 
   @media (min-width: 680px) {
