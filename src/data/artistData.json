@@ -4,69 +4,79 @@
     "game": "1-art",
     "isNew": true,
     "src": "q0",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 2",
     "game": "2-art",
     "isNew": true,
     "src": "q2",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 3",
     "game": "3-art",
     "isNew": true,
     "src": "q3",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 4",
     "game": "4-art",
     "isNew": true,
     "src": "q5",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 5",
     "game": "5-art",
     "isNew": true,
     "src": "q4",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 6",
     "game": "6-art",
     "isNew": true,
     "src": "q7",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 7",
     "game": "7-art",
     "isNew": true,
     "src": "q8",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 8",
     "game": "8-art",
     "isNew": true,
     "src": "q9",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 9",
     "game": "9-art",
     "isNew": true,
     "src": "q11",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 10",
     "game": "10-art",
     "isNew": true,
     "src": "q6",
-    "done": 0
+    "done": 0,
+    "solved": []
   }
 ]

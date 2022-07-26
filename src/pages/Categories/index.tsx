@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppRoutes } from '../../constants';
 import { Container } from './styles';
 import { CategoryCard } from '../../components';
+import { GlobalContext } from '../../store';
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 8, 10];
 const Categories = () => {
   const [path, setPath] = useState('');
   const { pathname } = useLocation();
+  const [{ artists, pictures }] = useContext(GlobalContext);
+
+  // console.log(state);
 
   useEffect(() => {
     if (pathname === AppRoutes.PIC) setPath(AppRoutes.PIC);
@@ -16,9 +19,8 @@ const Categories = () => {
 
   return (
     <Container>
-      {arr.map((el) => (
-        <CategoryCard key={Date.now()} />
-      ))}
+      {path === AppRoutes.PIC && pictures.map((el) => <CategoryCard {...el} key={el.game} />)}
+      {path === AppRoutes.ART && artists.map((el) => <CategoryCard {...el} key={el.game} />)}
     </Container>
   );
 };

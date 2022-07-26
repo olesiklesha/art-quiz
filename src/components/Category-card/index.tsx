@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { CategoryContainer, CategoryImage } from './styles';
 import { AppRoutes } from '../../constants';
+import { ICategory } from '../../models';
 
-const CategoryCard = () => {
+const CategoryCard: FC<ICategory> = ({ name, game, src, isNew, done }) => {
   return (
     <CategoryContainer to={AppRoutes.GAME}>
-      this is card
+      {name}
       <CategoryImage />
     </CategoryContainer>
   );

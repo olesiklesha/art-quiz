@@ -8,3 +8,5 @@ export enum AppRoutes {
   ERROR = '*',
   SETTINGS = 'settings',
 }
+
+export const LS = 'react-art-quiz';

@@ -4,69 +4,79 @@
     "game": "1-pic",
     "isNew": true,
     "src": "pic1",
-    "done": 0
+    "done": 0,
+    ":": []
   },
   {
     "name": "Round 2",
     "game": "2-pic",
     "isNew": true,
     "src": "pic2",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 3",
     "game": "3-pic",
     "isNew": true,
     "src": "pic3",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 4",
     "game": "4-pic",
     "isNew": true,
     "src": "pic4",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 5",
     "game": "5-pic",
     "isNew": true,
     "src": "pic5",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 6",
     "game": "6-pic",
     "isNew": true,
     "src": "pic6",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 7",
     "game": "7-pic",
     "isNew": true,
     "src": "pic7",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 8",
     "game": "8-pic",
     "isNew": true,
     "src": "pic8",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 9",
     "game": "9-pic",
     "isNew": true,
     "src": "pic9",
-    "done": 0
+    "done": 0,
+    "solved": []
   },
   {
     "name": "Round 10",
     "game": "10-pic",
     "isNew": true,
     "src": "pic10",
-    "done": 0
+    "done": 0,
+    "solved": []
   }
 ]
