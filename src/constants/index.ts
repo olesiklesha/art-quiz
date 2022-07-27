@@ -3,7 +3,7 @@ export enum AppRoutes {
   APP = '/app',
   ART = '/app/artist-quiz',
   PIC = '/app/picture-quiz',
-  GAME = '/quiz',
+  GAME = '/app/quiz/:id',
   RESULTS = '/app/results',
   ERROR = '*',
   SETTINGS = 'settings',

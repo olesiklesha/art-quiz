@@ -39,6 +39,7 @@ export const AppNav = styled.nav`
     position: static;
     width: fit-content;
     border: none;
+    margin-left: 20px;
   }
 
   @media (min-width: 1024px) {
