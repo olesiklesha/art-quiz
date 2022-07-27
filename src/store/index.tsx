@@ -17,7 +17,7 @@ interface GlobalAction {
 const initialState = initState();
 
 function globalReducer(state: GlobalState, action: GlobalAction) {
-  const { type, payload } = action;
+  const { type } = action;
 
   switch (type) {
     default:
