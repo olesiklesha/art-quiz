@@ -10,3 +10,20 @@ export interface ICategory {
 export interface GameDialogProps {
   round: string;
 }
+
+export interface IPicture {
+  author: string;
+  name: string;
+  year: string;
+  imageNum: string;
+}
+
+export interface IAppData {
+  art: IAppRounds;
+  pic: IAppRounds;
+  all: IPicture[];
+}
+
+export interface IAppRounds {
+  [key: string]: IPicture[];
+}

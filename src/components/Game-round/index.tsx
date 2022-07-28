@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { GameAnswerOptions, GameQuestion } from '../index';
+import { IPicture } from '../../models';
 
-const GameRound = () => {
+interface GameRoundProps extends IPicture {
+  gameVariant: string;
+  setNextRound: () => void;
+}
+
+const GameRound: FC<GameRoundProps> = ({
+  imageNum,
+  name,
+  year,
+  author,
+  gameVariant,
+  setNextRound,
+}) => {
   return (
     <div>
-      <GameQuestion />
+      <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === 'pic'} />
       <GameAnswerOptions />
+      <button onClick={setNextRound}>next</button>
     </div>
   );
 };
