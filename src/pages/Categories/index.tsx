@@ -10,8 +10,6 @@ const Categories = () => {
   const { pathname } = useLocation();
   const [{ artists, pictures }] = useContext(GlobalContext);
 
-  // console.log(state);
-
   useEffect(() => {
     if (pathname === AppRoutes.PIC) setPath(AppRoutes.PIC);
     if (pathname === AppRoutes.ART) setPath(AppRoutes.ART);

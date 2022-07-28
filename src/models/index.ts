@@ -7,6 +7,6 @@ export interface ICategory {
   solved: boolean[];
 }
 
-// export interface IStoreCategory extends ICategory {
-//   solved: boolean[];
-// }
+export interface GameDialogProps {
+  round: string;
+}

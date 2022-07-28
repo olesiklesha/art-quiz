@@ -3,3 +3,7 @@ export { default as SettingsBtn } from './Settings-btn';
 export { default as AppOutlet } from './App-outlet';
 export { default as CategoryCard } from './Category-card';
 export { default as CategoryInfo } from './Category-info';
+export { default as GameDialog } from './Game-dialog';
+export { default as GameQuestion } from './Game-question';
+export { default as GameAnswerOptions } from './Game-answer-options';
+export { default as GameRound } from './Game-round';
