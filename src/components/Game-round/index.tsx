@@ -16,10 +16,11 @@ const GameRound: FC<GameRoundProps> = ({
   gameVariant,
   setNextRound,
 }) => {
+  console.log(gameVariant);
   return (
     <div>
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
-      <GameAnswerOptions author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
+      <GameAnswerOptions imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <button onClick={setNextRound}>next</button>
     </div>
   );

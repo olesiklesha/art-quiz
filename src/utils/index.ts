@@ -1,8 +1,11 @@
-import { LS, PIC_QUANTITY } from '../constants';
+import { ANS_QUANTITY, LS, PIC_QUANTITY } from '../constants';
 import artistData from '../data/artistData.json';
 import pictureData from '../data/pictureData.json';
 import { GlobalState } from '../store';
-import { ICategory } from '../models';
+import { IAppData, ICategory } from '../models';
+import data from '../data/AppData.json';
+
+const { all: picturesData } = data as IAppData;
 
 export const initState = (): GlobalState => {
   const storageState = window.localStorage.getItem(LS);
@@ -30,8 +33,21 @@ const shuffle = (arr: number[]) => {
   return arr;
 };
 
-export const getNumberArray = (num: number) => {
-  const set = new Set<number>();
+const getNumberArray = (num: number) => {
+  const set = new Set<number>([num]);
+
+  while (set.size !== ANS_QUANTITY) {
+    const picNumber = getRandomNumber();
+
+    if (picturesData[picNumber].author !== picturesData[num].author) {
+      set.add(picNumber);
+    }
+  }
 
   return Array.from(set);
+};
+
+export const getAnswerOptions = (num: number) => {
+  const arr = getNumberArray(num);
+  return shuffle(arr);
 };

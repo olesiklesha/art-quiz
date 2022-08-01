@@ -12,8 +12,8 @@ export enum AppRoutes {
 export const LS = 'react-art-quiz';
 
 export enum Variant {
-  ART = 'ART',
-  PIC = 'PIC',
+  ART = 'art',
+  PIC = 'pic',
 }
 
 export const R_QUANTITY = 10;
