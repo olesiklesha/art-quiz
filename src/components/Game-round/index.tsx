@@ -16,7 +16,6 @@ const GameRound: FC<GameRoundProps> = ({
   gameVariant,
   setNextRound,
 }) => {
-  console.log(gameVariant);
   return (
     <div>
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
