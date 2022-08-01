@@ -10,8 +10,8 @@ interface GameRoundProps extends IPicture {
 
 const GameRound: FC<GameRoundProps> = ({
   imageNum,
-  name,
-  year,
+  // name,
+  // year,
   author,
   gameVariant,
   setNextRound,
