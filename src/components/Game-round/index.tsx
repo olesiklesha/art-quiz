@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { GameAnswerOptions, GameQuestion } from '../index';
+import { GameAnswerOptions, GameQuestion } from '..';
 import { IPicture } from '../../models';
+import { Variant } from '../../constants';
 
 interface GameRoundProps extends IPicture {
   gameVariant: string;
@@ -17,7 +18,7 @@ const GameRound: FC<GameRoundProps> = ({
 }) => {
   return (
     <div>
-      <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === 'pic'} />
+      <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <GameAnswerOptions />
       <button onClick={setNextRound}>next</button>
     </div>

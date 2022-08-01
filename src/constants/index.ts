@@ -10,3 +10,10 @@ export enum AppRoutes {
 }
 
 export const LS = 'react-art-quiz';
+
+export enum Variant {
+  ART = 'ART',
+  PIC = 'PIC',
+}
+
+export const R_QUANTITY = 10;
