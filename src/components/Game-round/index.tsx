@@ -19,7 +19,7 @@ const GameRound: FC<GameRoundProps> = ({
   return (
     <div>
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
-      <GameAnswerOptions />
+      <GameAnswerOptions author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <button onClick={setNextRound}>next</button>
     </div>
   );

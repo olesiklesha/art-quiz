@@ -17,3 +17,7 @@ export enum Variant {
 }
 
 export const R_QUANTITY = 10;
+
+export const ANS_QUANTITY = 4;
+
+export const PIC_QUANTITY = 241;

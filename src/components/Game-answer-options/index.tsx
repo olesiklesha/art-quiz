@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const GameAnswerOptions = () => {
+interface GameAnswerOptionsProps {
+  isPic: boolean;
+  author: string;
+  imageNum: string;
+}
+
+const GameAnswerOptions: FC<GameAnswerOptionsProps> = ({ imageNum, author, isPic }) => {
   return <div>answer oprions</div>;
 };
 
