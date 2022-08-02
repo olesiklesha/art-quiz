@@ -6,7 +6,7 @@ interface ImageProps {
 
 export const Image = styled.div<ImageProps>`
   //width: 95%;
-  height: 294px;
+  height: calc(294 / 640 * 100%);
   background-color: #5b5757;
   background-image: url(${(p) =>
     `https://raw.githubusercontent.com/irinainina/image-data/master/img/${p.num}.jpg`});
@@ -15,6 +15,10 @@ export const Image = styled.div<ImageProps>`
   background-size: cover;
   background-position: center;
   margin: 0 auto;
+
+  @media (min-width: 520px) {
+    height: calc(553 / 1024 * 100%);
+  }
 `;
 
 interface TitleProps {

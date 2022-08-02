@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AnswerOptionsBtn = styled.button`
-  width: 162px;
+  width: calc(158 / 328 * 100%);
   padding: 14px 0;
   background-color: transparent;
   color: #fff;
@@ -42,6 +42,12 @@ export const AnswersContainer = styled.div`
   justify-content: space-between;
   row-gap: 15px;
   margin-top: 25px;
+
+  @media (min-width: 520px) {
+    margin-top: 40px;
+    gap: 20px;
+    width: 100%;
+  }
 `;
 
 interface ImageAnswerOptionBtnProps {

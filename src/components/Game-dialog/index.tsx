@@ -4,7 +4,7 @@ import { GameRound } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
-import { Wrapper } from '../../styles';
+import { Wrapper } from './styles';
 
 const { art, pic } = appData as IAppData;
 
