@@ -60,7 +60,6 @@ export const BtnContainer = styled.div`
 
 export const ActionBtn = styled.button<ActionBtnProps>`
   width: calc(158 / 328 * 100%);
-  //max-width: 251px;
   color: #000;
   padding: 14px 0;
   background-color: ${(p) => (p.accent ? '#FFBCA2' : 'transparent')};

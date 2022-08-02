@@ -5,11 +5,17 @@ import { ConfirmWindow, Portal } from '..';
 interface ModalProps {
   isOpened: boolean;
   onCancel: () => void;
-  onAction: () => void;
+  onAction?: () => void;
   children?: JSX.Element | JSX.Element[];
 }
 
 const Modal: FC<ModalProps> = ({ isOpened, onCancel, children, onAction }) => {
+  const handleConfirm = () => {
+    if (!onAction) return;
+
+    onAction();
+  };
+
   return (
     <>
       {isOpened && (
@@ -18,7 +24,7 @@ const Modal: FC<ModalProps> = ({ isOpened, onCancel, children, onAction }) => {
             <Overlay onClick={onCancel} />
             <ModalWrapper>
               <ModalContainer>
-                {children || <ConfirmWindow onAction={onAction} onCancel={onCancel} />}
+                {children || <ConfirmWindow onAction={handleConfirm} onCancel={onCancel} />}
               </ModalContainer>
             </ModalWrapper>
           </OverlayWrapper>
