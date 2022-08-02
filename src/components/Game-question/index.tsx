@@ -9,12 +9,12 @@ interface GameQuestionProps {
 
 const GameQuestion: FC<GameQuestionProps> = ({ imageNum, author, isPic }) => {
   return (
-    <div>
+    <>
       <Title isPic={isPic}>
         {isPic ? 'Who is the author of this picture?' : `Which is ${author} picture?`}
       </Title>
       {isPic && <Image num={imageNum} />}
-    </div>
+    </>
   );
 };
 

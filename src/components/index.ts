@@ -7,3 +7,4 @@ export { default as GameDialog } from './Game-dialog';
 export { default as GameQuestion } from './Game-question';
 export { default as GameAnswerOptions } from './Game-answer-options';
 export { default as GameRound } from './Game-round';
+export { default as GameRoundHeader } from './Game-round-header';

@@ -20,7 +20,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const navigate = useNavigate();
 
   const finish = useCallback(() => {
-    navigate(variant === Variant.ART ? AppRoutes.ART : AppRoutes.PIC, { replace: false });
+    navigate(variant === Variant.ART ? AppRoutes.ART : AppRoutes.PIC, { replace: true });
   }, [navigate, variant]);
 
   const setNextRound = useCallback(() => {
@@ -35,7 +35,6 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   return (
     <Wrapper>
-      {round}
       <GameRound
         imageNum={imageNum}
         author={author}

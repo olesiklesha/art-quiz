@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { GameAnswerOptions, GameQuestion } from '..';
+import { GameAnswerOptions, GameQuestion, GameRoundHeader } from '..';
 import { IPicture } from '../../models';
 import { Variant } from '../../constants';
 
@@ -17,11 +17,12 @@ const GameRound: FC<GameRoundProps> = ({
   setNextRound,
 }) => {
   return (
-    <div>
+    <>
+      <GameRoundHeader />
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <GameAnswerOptions imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <button onClick={setNextRound}>next</button>
-    </div>
+    </>
   );
 };
 
