@@ -35,6 +35,7 @@ export const ModalWrapper = styled.div`
   width: 100%;
   position: relative;
   z-index: 6;
+  border-radius: 20px;
 
   @media (min-width: 600px) {
     width: 580px;
@@ -43,4 +44,39 @@ export const ModalWrapper = styled.div`
 
 export const ModalContainer = styled.div`
   padding: 20px;
+`;
+
+interface ActionBtnProps {
+  accent: boolean;
+}
+
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
+export const ActionBtn = styled.button<ActionBtnProps>`
+  width: calc(158 / 328 * 100%);
+  //max-width: 251px;
+  color: #000;
+  padding: 14px 0;
+  background-color: ${(p) => (p.accent ? '#FFBCA2' : 'transparent')};
+  border-radius: 56px;
+  border: ${(p) => (p.accent ? '1px solid transparent' : '1px solid #000')};
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 14px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: ${(p) => (p.accent ? '#000' : '#fff')};
+    background-color: ${(p) => (p.accent ? '#fff' : '#000')};
+    border: ${(p) => (p.accent ? '1px solid #FFBCA2' : '1px solid #000')};
+  }
 `;

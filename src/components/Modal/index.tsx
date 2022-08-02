@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { ModalContainer, ModalWrapper, Overlay, OverlayWrapper } from './styles';
-import { Portal } from '..';
+import { ConfirmWindow, Portal } from '..';
 
 interface ModalProps {
   isOpened: boolean;
   onCancel: () => void;
-  children?: JSX.Element | JSX.Element[];
   onAction: () => void;
+  children?: JSX.Element | JSX.Element[];
 }
 
 const Modal: FC<ModalProps> = ({ isOpened, onCancel, children, onAction }) => {
@@ -17,7 +17,9 @@ const Modal: FC<ModalProps> = ({ isOpened, onCancel, children, onAction }) => {
           <OverlayWrapper>
             <Overlay onClick={onCancel} />
             <ModalWrapper>
-              <ModalContainer>{children || <div>confirm</div>}</ModalContainer>
+              <ModalContainer>
+                {children || <ConfirmWindow onAction={onAction} onCancel={onCancel} />}
+              </ModalContainer>
             </ModalWrapper>
           </OverlayWrapper>
         </Portal>
