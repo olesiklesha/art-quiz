@@ -41,7 +41,7 @@ export const AnswersContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 15px;
-  margin-top: 20px;
+  margin-top: 25px;
 `;
 
 interface ImageAnswerOptionBtnProps {
@@ -59,4 +59,5 @@ export const ImageAnswerOptionBtn = styled.button<ImageAnswerOptionBtnProps>`
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  border: none;
 `;

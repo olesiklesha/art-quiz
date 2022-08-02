@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Image } from './styles';
+import { Image, Title } from './styles';
 
 interface GameQuestionProps {
   author: string;
@@ -10,7 +10,9 @@ interface GameQuestionProps {
 const GameQuestion: FC<GameQuestionProps> = ({ imageNum, author, isPic }) => {
   return (
     <div>
-      {isPic ? <h3>Who is the author of this picture?</h3> : <h3>Which is {author} picture?</h3>}
+      <Title isPic={isPic}>
+        {isPic ? 'Who is the author of this picture?' : `Which is ${author} picture?`}
+      </Title>
       {isPic && <Image num={imageNum} />}
     </div>
   );

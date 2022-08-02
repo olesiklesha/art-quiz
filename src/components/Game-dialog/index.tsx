@@ -4,6 +4,7 @@ import { GameRound } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
+import { Wrapper } from '../../styles';
 
 const { art, pic } = appData as IAppData;
 
@@ -33,7 +34,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const { author, year, name, imageNum } = gameState[roundNumber];
 
   return (
-    <div>
+    <Wrapper>
       {round}
       <GameRound
         imageNum={imageNum}
@@ -43,7 +44,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
         gameVariant={variant}
         setNextRound={setNextRound}
       />
-    </div>
+    </Wrapper>
   );
 };
 
