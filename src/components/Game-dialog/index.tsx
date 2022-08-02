@@ -1,6 +1,6 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, MouseEventHandler, useCallback, useState } from 'react';
 import { GameDialogProps, IAppData, IPicture } from '../../models';
-import { GameRound } from '..';
+import { AnswerResultWindow, GameRound, Modal } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
@@ -17,6 +17,8 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const variant = round.split('-').slice(-1).join('');
   const [gameState] = useState<IPicture[]>(getInitialGameState(round, variant));
   const [roundNumber, setRoundNumber] = useState(0);
+  const [answersState, setAnswersState] = useState<boolean[]>([]);
+  const [isOpened, setIsOpened] = useState(false);
   const navigate = useNavigate();
 
   const finish = useCallback(() => {
@@ -32,6 +34,15 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   }, [roundNumber, finish]);
 
   const { author, year, name, imageNum } = gameState[roundNumber];
+  const checkAnswer = (answer: string, correctAnswer: string) => {
+    setAnswersState((prev) => [...prev, answer === correctAnswer]);
+    setIsOpened(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpened(false);
+    setNextRound();
+  };
 
   return (
     <Wrapper>
@@ -42,7 +53,15 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
         year={year}
         gameVariant={variant}
         setNextRound={setNextRound}
+        check={checkAnswer}
       />
+      <Modal isOpened={isOpened} onCancel={handleCloseModal}>
+        <AnswerResultWindow
+          onCansel={handleCloseModal}
+          result={answersState[roundNumber]}
+          pic={gameState[roundNumber]}
+        />
+      </Modal>
     </Wrapper>
   );
 };
