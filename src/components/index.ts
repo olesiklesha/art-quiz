@@ -8,3 +8,5 @@ export { default as GameQuestion } from './Game-question';
 export { default as GameAnswerOptions } from './Game-answer-options';
 export { default as GameRound } from './Game-round';
 export { default as GameRoundHeader } from './Game-round-header';
+export { default as Portal } from './Portal';
+export { default as Modal } from './Modal';
