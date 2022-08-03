@@ -35,7 +35,9 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   const { author, year, name, imageNum } = gameState[roundNumber];
   const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
-    setAnswersState((prev) => [...prev, answer === correctAnswer]);
+    const ans = answer === correctAnswer;
+
+    setAnswersState((prev) => [...prev, ans]);
     setIsOpened(true);
   }, []);
 

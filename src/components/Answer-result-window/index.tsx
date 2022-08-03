@@ -10,7 +10,7 @@ interface ResultWindowProps {
 
 const AnswerResultWindow: FC<ResultWindowProps> = ({ result, pic, onCansel }) => {
   const { author, year, name, imageNum } = pic;
-  console.log(result);
+
   return (
     <>
       <Picture isCorrect={result} img={imageNum} />
