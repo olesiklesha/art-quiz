@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from 'react';
+import React, { FC, memo } from 'react';
 import { getAnswerOptions } from '../../utils';
 import appData from '../../data/AppData.json';
 import { IAppData } from '../../models';
@@ -45,4 +45,4 @@ const GameAnswerOptions: FC<GameAnswerOptionsProps> = ({ imageNum, isPic, check 
   );
 };
 
-export default GameAnswerOptions;
+export default memo(GameAnswerOptions);

@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { GameDialogProps, IAppData, IPicture } from '../../models';
 import { AnswerResultWindow, GameRound, Modal } from '..';
 import appData from '../../data/AppData.json';
@@ -34,10 +34,10 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   }, [roundNumber, finish]);
 
   const { author, year, name, imageNum } = gameState[roundNumber];
-  const checkAnswer = (answer: string, correctAnswer: string) => {
+  const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
     setAnswersState((prev) => [...prev, answer === correctAnswer]);
     setIsOpened(true);
-  };
+  }, []);
 
   const handleCloseModal = () => {
     setIsOpened(false);
@@ -52,7 +52,6 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
         name={name}
         year={year}
         gameVariant={variant}
-        setNextRound={setNextRound}
         check={checkAnswer}
       />
       <Modal isOpened={isOpened} onCancel={handleCloseModal}>

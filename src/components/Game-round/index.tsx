@@ -6,7 +6,7 @@ import { Wrapper } from './styles';
 
 interface GameRoundProps extends IPicture {
   gameVariant: string;
-  setNextRound: () => void;
+  // setNextRound: () => void;
   check: (answer: string, correctAnswer: string) => void;
 }
 
@@ -16,7 +16,7 @@ const GameRound: FC<GameRoundProps> = ({
   // year,
   author,
   gameVariant,
-  setNextRound,
+  // setNextRound,
   check,
 }) => {
   return (
@@ -24,7 +24,6 @@ const GameRound: FC<GameRoundProps> = ({
       <GameRoundHeader />
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <GameAnswerOptions imageNum={imageNum} isPic={gameVariant === Variant.PIC} check={check} />
-      <button onClick={setNextRound}>next</button>
     </Wrapper>
   );
 };
