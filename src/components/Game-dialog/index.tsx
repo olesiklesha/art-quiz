@@ -70,7 +70,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
         />
       </Modal>
       <Modal isOpened={isResultOpened} onCancel={closeResultWindow}>
-        <GameResultWindow result={answersState} />
+        <GameResultWindow result={answersState} onAction={closeResultWindow} />
       </Modal>
     </Wrapper>
   );

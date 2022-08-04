@@ -3,7 +3,6 @@ import { R_QUANTITY } from '../../constants';
 import superIcon from '../../assets/icons/super.svg';
 import goodIcon from '../../assets/icons/good.svg';
 import gameOverIcon from '../../assets/icons/game-over.svg';
-import { Title } from '../Confirm-window/styles';
 
 interface Props {
   result: number;
@@ -68,8 +67,8 @@ export const ResultTitle = styled.h2<Props>`
   margin: ${(p) => {
     const { result } = p;
     if (result === R_QUANTITY) return '20px auto';
-    if (result > 0) return '30px auto 35px';
-    return '30px auto 25px';
+    if (result > 0) return '0 auto 35px';
+    return '0 auto 25px';
   }}; ;
 `;
 // line-height: ${(p) => {
