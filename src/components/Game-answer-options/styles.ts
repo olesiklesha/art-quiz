@@ -66,4 +66,8 @@ export const ImageAnswerOptionBtn = styled.button<ImageAnswerOptionBtnProps>`
   background-position: center;
   cursor: pointer;
   border: none;
+
+  @media (min-width: 768px) and (min-height: 800px) {
+    height: 307px;
+  }
 `;
