@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 import { GameDialogProps, IAppData, IPicture } from '../../models';
-import { AnswerResultWindow, GameRound, Modal } from '..';
+import { AnswerResultWindow, GameResultWindow, GameRound, Modal } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
@@ -19,6 +19,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const [roundNumber, setRoundNumber] = useState(0);
   const [answersState, setAnswersState] = useState<boolean[]>([]);
   const [isOpened, setIsOpened] = useState(false);
+  const [isResultOpened, setResultOpened] = useState(false);
   const navigate = useNavigate();
 
   const finish = useCallback(() => {
@@ -29,9 +30,14 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
     if (roundNumber < R_QUANTITY - 1) {
       setRoundNumber((prev) => prev + 1);
     } else {
-      finish();
+      setResultOpened(true);
     }
-  }, [roundNumber, finish]);
+  }, [roundNumber]);
+
+  const closeResultWindow = useCallback(() => {
+    setResultOpened((prev) => !prev);
+    finish();
+  }, [finish]);
 
   const { author, year, name, imageNum } = gameState[roundNumber];
   const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
@@ -62,6 +68,9 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
           result={answersState[roundNumber]}
           pic={gameState[roundNumber]}
         />
+      </Modal>
+      <Modal isOpened={isResultOpened} onCancel={closeResultWindow}>
+        <GameResultWindow result={answersState} />
       </Modal>
     </Wrapper>
   );

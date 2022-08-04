@@ -12,3 +12,4 @@ export { default as Portal } from './Portal';
 export { default as Modal } from './Modal';
 export { default as ConfirmWindow } from './Confirm-window';
 export { default as AnswerResultWindow } from './Answer-result-window';
+export { default as GameResultWindow } from './Game-result-window';
