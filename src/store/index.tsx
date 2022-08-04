@@ -1,25 +1,69 @@
 import { ICategory } from '../models';
 import { initState } from '../utils';
 import React, { createContext, useReducer } from 'react';
+import { LS, Variant } from '../constants';
 
 export interface GlobalState {
   artists: ICategory[];
   pictures: ICategory[];
 }
 
-export enum GlobalActionKind {}
+interface UpdatePicStateProps {
+  game: string;
+  solved: boolean[];
+  variant: Variant.ART | Variant.PIC;
+}
+
+export enum GlobalActionKind {
+  UPDATE_PIC_STATE = 'pictures',
+  UPDATE_SETT_STATE = 'settings',
+}
 
 interface GlobalAction {
   type: GlobalActionKind;
-  payload: ICategory;
+  payload: UpdatePicStateProps;
 }
 
 const initialState = initState();
 
 function globalReducer(state: GlobalState, action: GlobalAction) {
-  const { type } = action;
+  const { type, payload } = action;
 
   switch (type) {
+    case GlobalActionKind.UPDATE_PIC_STATE:
+      if (!payload.solved) return state;
+      const { solved, game, variant } = payload;
+
+      if (variant === Variant.PIC) {
+        const newState = {
+          ...state,
+          pictures: state.pictures.map((el) => {
+            if (el.game !== game) return el;
+
+            el.isNew = false;
+            el.done = solved.filter((el) => el).length;
+            el.solved = solved;
+            return el;
+          }),
+        };
+        window.localStorage.setItem(LS, JSON.stringify(newState));
+        return newState;
+      } else {
+        const newState = {
+          ...state,
+          artists: state.artists.map((el) => {
+            if (el.game !== game) return el;
+
+            el.isNew = false;
+            el.done = solved.filter((el) => el).length;
+            el.solved = solved;
+            return el;
+          }),
+        };
+        window.localStorage.setItem(LS, JSON.stringify(newState));
+        return newState;
+      }
+
     default:
       return state;
   }

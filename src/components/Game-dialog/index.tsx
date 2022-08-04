@@ -1,10 +1,11 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useContext, useState } from 'react';
 import { GameDialogProps, IAppData, IPicture } from '../../models';
 import { AnswerResultWindow, GameResultWindow, GameRound, Modal } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
 import { Wrapper } from './styles';
+import { GlobalActionKind, GlobalContext } from '../../store';
 
 const { art, pic } = appData as IAppData;
 
@@ -15,6 +16,7 @@ const getInitialGameState = (round: string, variant: string) => {
 
 const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const variant = round.split('-').slice(-1).join('');
+  const [, dispatch] = useContext(GlobalContext);
   const [gameState] = useState<IPicture[]>(getInitialGameState(round, variant));
   const [roundNumber, setRoundNumber] = useState(0);
   const [answersState, setAnswersState] = useState<boolean[]>([]);
@@ -36,8 +38,16 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   const closeResultWindow = useCallback(() => {
     setResultOpened((prev) => !prev);
+    dispatch({
+      type: GlobalActionKind.UPDATE_PIC_STATE,
+      payload: {
+        game: round,
+        variant: variant === Variant.ART ? Variant.ART : Variant.PIC,
+        solved: answersState,
+      },
+    });
     finish();
-  }, [finish]);
+  }, [finish, answersState, dispatch, round, variant]);
 
   const { author, year, name, imageNum } = gameState[roundNumber];
   const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
