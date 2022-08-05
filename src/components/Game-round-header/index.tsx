@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppRoutes, Variant } from '../../constants';
 import { BtnClose } from '../../styles';
 import { Header } from './styles';
 import { Modal, Timer } from '../index';
 
-const GameRoundHeader = () => {
+interface RoundHeaderProps {
+  finishRound: (answer: string, correctAnswer: string) => void;
+}
+
+const GameRoundHeader: FC<RoundHeaderProps> = ({ finishRound }) => {
   const [isOpened, setIsOpened] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -22,7 +26,7 @@ const GameRoundHeader = () => {
     <>
       <Header>
         <BtnClose onClick={handleBtnCloseClick} />
-        <Timer />
+        <Timer finishRound={finishRound} />
       </Header>
       <Modal isOpened={isOpened} onCancel={handleBtnCloseClick} onAction={closeModal} />
     </>

@@ -21,7 +21,7 @@ const GameRound: FC<GameRoundProps> = ({
 }) => {
   return (
     <Wrapper>
-      <GameRoundHeader />
+      <GameRoundHeader finishRound={check} />
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <GameAnswerOptions imageNum={imageNum} isPic={gameVariant === Variant.PIC} check={check} />
     </Wrapper>
