@@ -1,4 +1,4 @@
-import { ANS_QUANTITY, LS, PIC_QUANTITY } from '../constants';
+import { ANS_QUANTITY, DEFAULT_SETTINGS, LS, PIC_QUANTITY } from '../constants';
 import artistData from '../data/artistData.json';
 import pictureData from '../data/pictureData.json';
 import { GlobalState } from '../store';
@@ -17,6 +17,7 @@ export const initState = (): GlobalState => {
   return {
     artists: artistData as ICategory[],
     pictures: pictureData as ICategory[],
+    settings: DEFAULT_SETTINGS,
   };
 };
 

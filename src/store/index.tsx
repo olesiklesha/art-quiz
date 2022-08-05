@@ -1,4 +1,4 @@
-import { ICategory } from '../models';
+import { ICategory, ISettings } from '../models';
 import { initState } from '../utils';
 import React, { createContext, useReducer } from 'react';
 import { LS, Variant } from '../constants';
@@ -6,6 +6,7 @@ import { LS, Variant } from '../constants';
 export interface GlobalState {
   artists: ICategory[];
   pictures: ICategory[];
+  settings: ISettings;
 }
 
 interface UpdatePicStateProps {
@@ -21,7 +22,7 @@ export enum GlobalActionKind {
 
 interface GlobalAction {
   type: GlobalActionKind;
-  payload: UpdatePicStateProps;
+  payload: UpdatePicStateProps | ISettings;
 }
 
 const initialState = initState();
@@ -31,8 +32,7 @@ function globalReducer(state: GlobalState, action: GlobalAction) {
 
   switch (type) {
     case GlobalActionKind.UPDATE_PIC_STATE:
-      if (!payload.solved) return state;
-      const { solved, game, variant } = payload;
+      const { solved, game, variant } = payload as UpdatePicStateProps;
 
       if (variant === Variant.PIC) {
         const newState = {
@@ -63,6 +63,13 @@ function globalReducer(state: GlobalState, action: GlobalAction) {
         window.localStorage.setItem(LS, JSON.stringify(newState));
         return newState;
       }
+
+    case GlobalActionKind.UPDATE_SETT_STATE:
+      const { isTimeGame, volume, duration } = payload as ISettings;
+      return {
+        ...state,
+        settings: { isTimeGame, volume, duration },
+      };
 
     default:
       return state;

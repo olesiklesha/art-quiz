@@ -1,3 +1,5 @@
+import { ISettings } from '../models';
+
 export enum AppRoutes {
   MAIN = '/',
   APP = '/app',
@@ -21,3 +23,9 @@ export const R_QUANTITY = 10;
 export const ANS_QUANTITY = 4;
 
 export const PIC_QUANTITY = 241;
+
+export const DEFAULT_SETTINGS: ISettings = Object.freeze({
+  isTimeGame: true,
+  duration: 20,
+  volume: 50,
+});

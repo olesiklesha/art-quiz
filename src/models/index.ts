@@ -27,3 +27,9 @@ export interface IAppData {
 export interface IAppRounds {
   [key: string]: IPicture[];
 }
+
+export interface ISettings {
+  isTimeGame: boolean;
+  duration: number;
+  volume: number;
+}
