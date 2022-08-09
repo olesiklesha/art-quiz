@@ -1,5 +1,6 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../store';
+import { Time } from './styles';
 
 interface TimerProps {
   finishRound: (answer: string, correctAnswer: string) => void;
@@ -12,17 +13,6 @@ const Timer: FC<TimerProps> = ({ finishRound, isTimerActive }) => {
   const [{ settings }] = useContext(GlobalContext);
   const { isTimeGame, duration } = settings;
   const [seconds, setSeconds] = useState(duration);
-  console.log(isTimerActive);
-  // const [isActive, setIsActive] = useState(isTimerActive);
-
-  // const toggleIsActive = () => {
-  //   setIsActive(!isActive);
-  // };
-  //
-  // const reset = () => {
-  //   setSeconds(duration);
-  //   setIsActive(true);
-  // };
 
   useEffect(() => {
     if (isTimerActive) {
@@ -36,11 +26,12 @@ const Timer: FC<TimerProps> = ({ finishRound, isTimerActive }) => {
       }, 1000);
     } else {
       clearInterval(interval);
+      setSeconds(duration);
     }
     return () => clearInterval(interval);
   }, [isTimerActive, seconds, finishRound, duration]);
 
-  return <>{isTimeGame && <div>it is timer {seconds}s</div>}</>;
+  return <>{isTimeGame && <Time>{seconds}s</Time>}</>;
 };
 
 export default Timer;

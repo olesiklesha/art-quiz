@@ -19,7 +19,6 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const variant = round.split('-').slice(-1).join('');
   const [gameState, gameDispatch] = useReducer(gameReducer, {
     answersState: [],
-    variant,
     roundNumber: 0,
     roundsState: getInitialGameState(round, variant),
     isTimerActive: true,
@@ -59,26 +58,31 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
     finish();
   }, [finish, answersState, dispatch, round, variant]);
 
-  const { author, year, name, imageNum } = roundsState[roundNumber];
-  const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
-    gameDispatch({
-      type: GameActionKind.SET_ANS_STATE,
-      payload: answer === correctAnswer,
-    });
-    setIsOpened(true);
+  const toggleIsTimerActive = useCallback(() => {
     gameDispatch({
       type: GameActionKind.SET_T,
-      payload: false,
+      payload: !isTimerActive,
     });
-  }, []);
+  }, [isTimerActive]);
+
+  const { author, imageNum } = roundsState[roundNumber];
+
+  const checkAnswer = useCallback(
+    (answer: string, correctAnswer: string) => {
+      gameDispatch({
+        type: GameActionKind.SET_ANS_STATE,
+        payload: answer === correctAnswer,
+      });
+      setIsOpened(true);
+      toggleIsTimerActive();
+    },
+    [toggleIsTimerActive]
+  );
 
   const handleCloseModal = () => {
     setIsOpened(false);
     setNextRound();
-    gameDispatch({
-      type: GameActionKind.SET_T,
-      payload: true,
-    });
+    toggleIsTimerActive();
   };
 
   return (
@@ -86,8 +90,6 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
       <GameRound
         imageNum={imageNum}
         author={author}
-        name={name}
-        year={year}
         gameVariant={variant}
         check={checkAnswer}
         isTimerActive={isTimerActive}

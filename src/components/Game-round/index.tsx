@@ -4,23 +4,13 @@ import { IPicture } from '../../models';
 import { Variant } from '../../constants';
 import { Wrapper } from './styles';
 
-interface GameRoundProps extends IPicture {
+type GameRoundProps = Omit<IPicture, 'name' | 'year'> & {
   gameVariant: string;
-  // setNextRound: () => void;
   check: (answer: string, correctAnswer: string) => void;
   isTimerActive: boolean;
-}
+};
 
-const GameRound: FC<GameRoundProps> = ({
-  imageNum,
-  // name,
-  // year,
-  author,
-  gameVariant,
-  // setNextRound,
-  check,
-  isTimerActive,
-}) => {
+const GameRound: FC<GameRoundProps> = ({ imageNum, author, gameVariant, check, isTimerActive }) => {
   return (
     <Wrapper>
       <GameRoundHeader finishRound={check} isTimerActive={isTimerActive} />

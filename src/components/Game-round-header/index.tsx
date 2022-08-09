@@ -19,6 +19,7 @@ const GameRoundHeader: FC<RoundHeaderProps> = ({ finishRound, isTimerActive }) =
   const handleBtnCloseClick = () => {
     setIsOpened((prev) => !prev);
   };
+
   const closeModal = () => {
     navigate(path === Variant.PIC ? AppRoutes.PIC : AppRoutes.ART, { replace: true });
   };

@@ -8,14 +8,13 @@ export enum GameActionKind {
 
 interface GameAction {
   type: GameActionKind;
-  payload?: boolean | unknown;
+  payload?: boolean;
 }
 
 interface GameState {
   roundNumber: number;
   answersState: boolean[];
   roundsState: IPicture[];
-  variant: string;
   isTimerActive: boolean;
 }
 
