@@ -1,11 +1,12 @@
-import React, { FC, useCallback, useContext, useState } from 'react';
-import { GameDialogProps, IAppData, IPicture } from '../../models';
+import React, { FC, useCallback, useContext, useReducer, useState } from 'react';
+import { GameDialogProps, IAppData } from '../../models';
 import { AnswerResultWindow, GameResultWindow, GameRound, Modal } from '..';
 import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
 import { Wrapper } from './styles';
 import { GlobalActionKind, GlobalContext } from '../../store';
+import { GameActionKind, gameReducer } from './helper';
 
 const { art, pic } = appData as IAppData;
 
@@ -16,10 +17,17 @@ const getInitialGameState = (round: string, variant: string) => {
 
 const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const variant = round.split('-').slice(-1).join('');
+  const [gameState, gameDispatch] = useReducer(gameReducer, {
+    answersState: [],
+    variant,
+    roundNumber: 0,
+    roundsState: getInitialGameState(round, variant),
+    isTimerActive: true,
+  });
+
+  const { roundNumber, answersState, roundsState, isTimerActive } = gameState;
+
   const [, dispatch] = useContext(GlobalContext);
-  const [gameState] = useState<IPicture[]>(getInitialGameState(round, variant));
-  const [roundNumber, setRoundNumber] = useState(0);
-  const [answersState, setAnswersState] = useState<boolean[]>([]);
   const [isOpened, setIsOpened] = useState(false);
   const [isResultOpened, setResultOpened] = useState(false);
   const navigate = useNavigate();
@@ -30,7 +38,9 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   const setNextRound = useCallback(() => {
     if (roundNumber < R_QUANTITY - 1) {
-      setRoundNumber((prev) => prev + 1);
+      gameDispatch({
+        type: GameActionKind.SET_R_NUMBER,
+      });
     } else {
       setResultOpened(true);
     }
@@ -49,17 +59,26 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
     finish();
   }, [finish, answersState, dispatch, round, variant]);
 
-  const { author, year, name, imageNum } = gameState[roundNumber];
+  const { author, year, name, imageNum } = roundsState[roundNumber];
   const checkAnswer = useCallback((answer: string, correctAnswer: string) => {
-    const ans = answer === correctAnswer;
-
-    setAnswersState((prev) => [...prev, ans]);
+    gameDispatch({
+      type: GameActionKind.SET_ANS_STATE,
+      payload: answer === correctAnswer,
+    });
     setIsOpened(true);
+    gameDispatch({
+      type: GameActionKind.SET_T,
+      payload: false,
+    });
   }, []);
 
   const handleCloseModal = () => {
     setIsOpened(false);
     setNextRound();
+    gameDispatch({
+      type: GameActionKind.SET_T,
+      payload: true,
+    });
   };
 
   return (
@@ -71,12 +90,13 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
         year={year}
         gameVariant={variant}
         check={checkAnswer}
+        isTimerActive={isTimerActive}
       />
       <Modal isOpened={isOpened} onCancel={handleCloseModal}>
         <AnswerResultWindow
           onCansel={handleCloseModal}
           result={answersState[roundNumber]}
-          pic={gameState[roundNumber]}
+          pic={roundsState[roundNumber]}
         />
       </Modal>
       <Modal isOpened={isResultOpened} onCancel={closeResultWindow}>

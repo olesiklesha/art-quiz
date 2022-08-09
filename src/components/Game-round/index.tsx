@@ -8,6 +8,7 @@ interface GameRoundProps extends IPicture {
   gameVariant: string;
   // setNextRound: () => void;
   check: (answer: string, correctAnswer: string) => void;
+  isTimerActive: boolean;
 }
 
 const GameRound: FC<GameRoundProps> = ({
@@ -18,10 +19,11 @@ const GameRound: FC<GameRoundProps> = ({
   gameVariant,
   // setNextRound,
   check,
+  isTimerActive,
 }) => {
   return (
     <Wrapper>
-      <GameRoundHeader finishRound={check} />
+      <GameRoundHeader finishRound={check} isTimerActive={isTimerActive} />
       <GameQuestion author={author} imageNum={imageNum} isPic={gameVariant === Variant.PIC} />
       <GameAnswerOptions imageNum={imageNum} isPic={gameVariant === Variant.PIC} check={check} />
     </Wrapper>

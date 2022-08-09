@@ -7,9 +7,10 @@ import { Modal, Timer } from '../index';
 
 interface RoundHeaderProps {
   finishRound: (answer: string, correctAnswer: string) => void;
+  isTimerActive: boolean;
 }
 
-const GameRoundHeader: FC<RoundHeaderProps> = ({ finishRound }) => {
+const GameRoundHeader: FC<RoundHeaderProps> = ({ finishRound, isTimerActive }) => {
   const [isOpened, setIsOpened] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -26,7 +27,7 @@ const GameRoundHeader: FC<RoundHeaderProps> = ({ finishRound }) => {
     <>
       <Header>
         <BtnClose onClick={handleBtnCloseClick} />
-        <Timer finishRound={finishRound} />
+        <Timer finishRound={finishRound} isTimerActive={isTimerActive} />
       </Header>
       <Modal isOpened={isOpened} onCancel={handleBtnCloseClick} onAction={closeModal} />
     </>
