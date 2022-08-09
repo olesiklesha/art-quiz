@@ -7,7 +7,7 @@ const SettingsBtn = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(AppRoutes.SETTINGS);
+    navigate('../' + AppRoutes.SETTINGS);
   };
 
   return <BtnSettings onClick={handleClick} />;

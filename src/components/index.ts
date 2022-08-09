@@ -14,3 +14,4 @@ export { default as ConfirmWindow } from './Confirm-window';
 export { default as AnswerResultWindow } from './Answer-result-window';
 export { default as GameResultWindow } from './Game-result-window';
 export { default as Timer } from './Timer';
+export { default as SettingsHeader } from './Settings-header';

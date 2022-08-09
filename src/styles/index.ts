@@ -23,6 +23,9 @@ const SmallIconBtn = styled(IconBtn)`
 `;
 
 export const BtnBack = styled(IconBtn)`
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: url(${iconBack});
 `;
 

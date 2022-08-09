@@ -1,7 +1,13 @@
 import React from 'react';
+import { Wrapper } from '../../components/Game-dialog/styles';
+import { SettingsHeader } from '../../components';
 
 const Settings = () => {
-  return <div>this is settings page</div>;
+  return (
+    <Wrapper>
+      <SettingsHeader />
+    </Wrapper>
+  );
 };
 
 export default Settings;
