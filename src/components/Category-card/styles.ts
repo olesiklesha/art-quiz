@@ -34,7 +34,7 @@ export const CategoryImage = styled.div<CategoryImageProps>`
   background-size: cover;
   border-radius: 20px;
   background-color: #5b5757;
-  background-image: url(${(p) => `../${p.src}.jpg`});
+  background-image: url(${(p) => `../../../../${p.src}.jpg`});
   filter: grayscale(${(p) => (p.isNew ? 1 : 0)});
 
   @media (min-width: 680px) {
@@ -49,6 +49,8 @@ export const CategoryImage = styled.div<CategoryImageProps>`
     height: 22vh;
   }
 `;
+
+console.log(process.env.PUBLIC_URL);
 
 export const CategoryImageLabel = styled.div`
   position: absolute;
