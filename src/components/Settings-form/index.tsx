@@ -4,10 +4,14 @@ import { useForm } from 'react-hook-form';
 import { ISettings } from '../../models';
 import { DEFAULT_SETTINGS } from '../../constants';
 import {
+  CustomNumberInput,
   CustomRange,
+  DurationFieldContainer,
   InputToggle,
   LabelContainer,
   LabelToggle,
+  SetMoreBtn,
+  SetNumberBtn,
   SwitchToggle,
   Title,
   VolumeBtnContainer,
@@ -26,8 +30,8 @@ const SettingsForm = () => {
     setRangeValue(Number(e.currentTarget.value));
   };
 
-  const handleCheckboxChange = () => {
-    setCheckboxValue(getValues('isTimeGame'));
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckboxValue(e.currentTarget.checked);
   };
 
   const onSubmit = (formState: ISettings) => {
@@ -53,6 +57,20 @@ const SettingsForm = () => {
     setRangeValue(100);
     setValue('volume', 100);
   }, [setValue]);
+
+  const addTime = useCallback(() => {
+    const prev = getValues('duration');
+    if (prev < 60) {
+      setValue('duration', prev + 5);
+    }
+  }, [getValues, setValue]);
+
+  const subtractTime = useCallback(() => {
+    const prev = getValues('duration');
+    if (prev > 20) {
+      setValue('duration', prev - 5);
+    }
+  }, [getValues, setValue]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,7 +104,19 @@ const SettingsForm = () => {
       </LabelContainer>
       <LabelContainer>
         <Title>Time to answer</Title>
-        <input type="number" min={10} max={60} {...register('duration')} id="duration" />
+        <DurationFieldContainer>
+          <SetNumberBtn onClick={subtractTime} />
+          <CustomNumberInput
+            type="number"
+            readOnly
+            {...register('duration', {
+              min: 10,
+              max: 60,
+            })}
+            id="duration"
+          />
+          <SetMoreBtn onClick={addTime} />
+        </DurationFieldContainer>
       </LabelContainer>
       <div>
         <button onClick={setDefaultValues}>default</button>

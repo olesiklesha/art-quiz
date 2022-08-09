@@ -49,6 +49,11 @@ export const CustomRange = styled.input<RangeProps>`
 export const VolumeBtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const DurationFieldContainer = styled(VolumeBtnContainer)`
+  justify-content: center;
 `;
 
 export const LabelToggle = styled.label`
@@ -91,5 +96,60 @@ export const InputToggle = styled.input`
       transform: translate(24px, -50%);
       background-color: rgba(255, 255, 255, 0.8);
     }
+  }
+`;
+
+export const CustomNumberInput = styled.input`
+  color: #fff;
+  background-color: transparent;
+  font-size: 28px;
+  line-height: 28px;
+  width: 60px;
+  text-align: center;
+  border: none;
+  margin-left: 25px;
+  margin-right: 25px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  outline: none;
+`;
+
+export const SetNumberBtn = styled.button`
+  display: block;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  background-color: #ffbca2;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    display: block;
+    width: 13px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #000;
+  }
+`;
+
+export const SetMoreBtn = styled(SetNumberBtn)`
+  background-color: #fff;
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    content: '';
+    display: block;
+    width: 14px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #000;
   }
 `;
