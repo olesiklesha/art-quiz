@@ -1,14 +1,21 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { GlobalActionKind, GlobalContext } from '../../store';
 import { useForm } from 'react-hook-form';
 import { ISettings } from '../../models';
 import { DEFAULT_SETTINGS } from '../../constants';
+import { CustomRange, LabelContainer, Title, VolumeBtnContainer } from './styles';
+import { BtnMute, BtnVolume } from '../../styles';
 
 const SettingsForm = () => {
   const [{ settings }, dispatch] = useContext(GlobalContext);
-  const { register, handleSubmit, setValue } = useForm<ISettings>({
+  const { register, handleSubmit, setValue, getValues } = useForm<ISettings>({
     defaultValues: { ...settings },
   });
+  const [rangeValue, setRangeValue] = useState(getValues('volume'));
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRangeValue(Number(e.currentTarget.value));
+  };
 
   const onSubmit = (formState: ISettings) => {
     dispatch({
@@ -24,20 +31,42 @@ const SettingsForm = () => {
     setValue('volume', volume);
   }, [setValue]);
 
+  const mute = useCallback(() => {
+    setRangeValue(0);
+    setValue('volume', 0);
+  }, [setValue]);
+
+  const setMax = useCallback(() => {
+    setRangeValue(100);
+    setValue('volume', 100);
+  }, [setValue]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="volume">
-        volume
-        <input type="range" id="volume" />
-      </label>
-      <label htmlFor="time">
-        Time game
+      <LabelContainer htmlFor="volume">
+        <Title>Volume</Title>
+        <CustomRange
+          type="range"
+          id="volume"
+          {...register('volume')}
+          rangeValue={rangeValue}
+          onInput={handleChange}
+          min={0}
+          max={100}
+        />
+        <VolumeBtnContainer>
+          <BtnMute onClick={mute} />
+          <BtnVolume onClick={setMax} />
+        </VolumeBtnContainer>
+      </LabelContainer>
+      <LabelContainer htmlFor="time">
+        <Title>Time game</Title>
         <input type="checkbox" id="time" />
-      </label>
-      <label htmlFor="duration">
-        Time to answer
+      </LabelContainer>
+      <LabelContainer htmlFor="duration">
+        <Title>Time to answer</Title>
         <input type="number" min={10} max={60} {...register('duration')} id="duration" />
-      </label>
+      </LabelContainer>
       <div>
         <button onClick={setDefaultValues}>default</button>
         <button type="submit">save</button>

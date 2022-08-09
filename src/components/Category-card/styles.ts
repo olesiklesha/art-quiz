@@ -50,8 +50,6 @@ export const CategoryImage = styled.div<CategoryImageProps>`
   }
 `;
 
-console.log(process.env.PUBLIC_URL);
-
 export const CategoryImageLabel = styled.div`
   position: absolute;
   bottom: 0;

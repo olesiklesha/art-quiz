@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   position: relative;
+  margin-bottom: 50px;
 `;
 
 export const Title = styled.h2`
