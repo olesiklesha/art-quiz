@@ -3,7 +3,15 @@ import { GlobalActionKind, GlobalContext } from '../../store';
 import { useForm } from 'react-hook-form';
 import { ISettings } from '../../models';
 import { DEFAULT_SETTINGS } from '../../constants';
-import { CustomRange, LabelContainer, Title, VolumeBtnContainer } from './styles';
+import {
+  CustomRange,
+  InputToggle,
+  LabelContainer,
+  LabelToggle,
+  SwitchToggle,
+  Title,
+  VolumeBtnContainer,
+} from './styles';
 import { BtnMute, BtnVolume } from '../../styles';
 
 const SettingsForm = () => {
@@ -12,9 +20,14 @@ const SettingsForm = () => {
     defaultValues: { ...settings },
   });
   const [rangeValue, setRangeValue] = useState(getValues('volume'));
+  const [checkboxValue, setCheckboxValue] = useState(getValues('isTimeGame'));
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangeValue(Number(e.currentTarget.value));
+  };
+
+  const handleCheckboxChange = () => {
+    setCheckboxValue(getValues('isTimeGame'));
   };
 
   const onSubmit = (formState: ISettings) => {
@@ -43,14 +56,14 @@ const SettingsForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <LabelContainer htmlFor="volume">
+      <LabelContainer>
         <Title>Volume</Title>
         <CustomRange
           type="range"
           id="volume"
           {...register('volume')}
           rangeValue={rangeValue}
-          onInput={handleChange}
+          onInput={handleVolumeChange}
           min={0}
           max={100}
         />
@@ -59,11 +72,19 @@ const SettingsForm = () => {
           <BtnVolume onClick={setMax} />
         </VolumeBtnContainer>
       </LabelContainer>
-      <LabelContainer htmlFor="time">
+      <LabelContainer>
         <Title>Time game</Title>
-        <input type="checkbox" id="time" />
+        <LabelToggle>
+          <span>{checkboxValue ? 'On' : 'Off'}</span>
+          <InputToggle
+            type="checkbox"
+            {...register('isTimeGame')}
+            onChange={handleCheckboxChange}
+          />
+          <SwitchToggle />
+        </LabelToggle>
       </LabelContainer>
-      <LabelContainer htmlFor="duration">
+      <LabelContainer>
         <Title>Time to answer</Title>
         <input type="number" min={10} max={60} {...register('duration')} id="duration" />
       </LabelContainer>
