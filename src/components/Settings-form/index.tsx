@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { ISettings } from '../../models';
 import { DEFAULT_SETTINGS } from '../../constants';
 import {
+  BtnContainer,
   CustomNumberInput,
   CustomRange,
   DurationFieldContainer,
@@ -118,10 +119,10 @@ const SettingsForm = () => {
           <SetMoreBtn onClick={addTime} />
         </DurationFieldContainer>
       </LabelContainer>
-      <div>
+      <BtnContainer>
         <button onClick={setDefaultValues}>default</button>
         <button type="submit">save</button>
-      </div>
+      </BtnContainer>
     </form>
   );
 };

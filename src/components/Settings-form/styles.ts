@@ -56,6 +56,10 @@ export const DurationFieldContainer = styled(VolumeBtnContainer)`
   justify-content: center;
 `;
 
+export const BtnContainer = styled(DurationFieldContainer)`
+  margin-top: auto;
+`;
+
 export const LabelToggle = styled.label`
   display: flex;
   align-items: center;
