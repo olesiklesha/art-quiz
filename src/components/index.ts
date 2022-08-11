@@ -16,3 +16,4 @@ export { default as GameResultWindow } from './Game-result-window';
 export { default as Timer } from './Timer';
 export { default as SettingsHeader } from './Settings-header';
 export { default as SettingsForm } from './Settings-form';
+export { default as CategoryResults } from './Category-results';
