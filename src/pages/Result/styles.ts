@@ -56,7 +56,7 @@ export const Picture = styled.div<PicProps>`
   background-color: #5b5757;
   background-image: url(${(p) =>
     `https://raw.githubusercontent.com/irinainina/image-data/master/img/${p.src}.jpg`});
-  filter: grayscale(${(p) => (p.isSolved ? 1 : 0)});
+  filter: grayscale(${(p) => (p.isSolved ? 0 : 1)});
   overflow: hidden;
 
   @media (min-width: 680px) {
