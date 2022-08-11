@@ -1,13 +1,13 @@
 import React from 'react';
-import { Wrapper } from '../../components/Game-dialog/styles';
 import { SettingsHeader, SettingsForm } from '../../components';
+import { SettingsWrapper } from './styles';
 
 const Settings = () => {
   return (
-    <Wrapper>
+    <SettingsWrapper>
       <SettingsHeader />
       <SettingsForm />
-    </Wrapper>
+    </SettingsWrapper>
   );
 };
 

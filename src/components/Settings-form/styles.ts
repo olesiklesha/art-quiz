@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ActionBtn } from '../Modal/styles';
 
 export const Title = styled.h3`
   font-weight: 700;
@@ -7,6 +8,12 @@ export const Title = styled.h3`
   letter-spacing: -0.9px;
   text-align: center;
   margin: 0 0 20px 0;
+
+  @media (min-width: 720px) {
+    margin-bottom: 40px;
+    font-size: 34px;
+    text-align: left;
+  }
 `;
 
 export const LabelContainer = styled.div`
@@ -17,6 +24,7 @@ export const LabelContainer = styled.div`
 interface RangeProps {
   rangeValue: number;
 }
+
 export const CustomRange = styled.input<RangeProps>`
   position: relative;
   background: ${(p) =>
@@ -54,10 +62,33 @@ export const VolumeBtnContainer = styled.div`
 
 export const DurationFieldContainer = styled(VolumeBtnContainer)`
   justify-content: center;
+
+  @media (min-width: 720px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const BtnContainer = styled(DurationFieldContainer)`
-  margin-top: auto;
+  gap: 1rem;
+  transition: 0.3s ease-in-out;
+
+  @media (min-width: 720px) {
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
+`;
+
+export const FieldsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 800px) {
+    max-width: 492px;
+  }
 `;
 
 export const LabelToggle = styled.label`
@@ -66,6 +97,10 @@ export const LabelToggle = styled.label`
   justify-content: center;
   gap: 10px;
   cursor: pointer;
+
+  @media (min-width: 720px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const SwitchToggle = styled.div`
@@ -155,5 +190,14 @@ export const SetMoreBtn = styled(SetNumberBtn)`
     height: 3px;
     border-radius: 3px;
     background-color: #000;
+  }
+`;
+
+export const FormBtn = styled(ActionBtn)`
+  color: ${(p) => (p.accent ? '#000' : '#fff')};
+  border: ${(p) => (p.accent ? '1px solid transparent' : '1px solid #fff')};
+
+  @media (min-width: 720px) {
+    max-width: 287px;
   }
 `;

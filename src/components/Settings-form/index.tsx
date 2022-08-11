@@ -8,6 +8,8 @@ import {
   CustomNumberInput,
   CustomRange,
   DurationFieldContainer,
+  FieldsContainer,
+  FormBtn,
   InputToggle,
   LabelContainer,
   LabelToggle,
@@ -75,53 +77,59 @@ const SettingsForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <LabelContainer>
-        <Title>Volume</Title>
-        <CustomRange
-          type="range"
-          id="volume"
-          {...register('volume')}
-          rangeValue={rangeValue}
-          onInput={handleVolumeChange}
-          min={0}
-          max={100}
-        />
-        <VolumeBtnContainer>
-          <BtnMute onClick={mute} />
-          <BtnVolume onClick={setMax} />
-        </VolumeBtnContainer>
-      </LabelContainer>
-      <LabelContainer>
-        <Title>Time game</Title>
-        <LabelToggle>
-          <span>{checkboxValue ? 'On' : 'Off'}</span>
-          <InputToggle
-            type="checkbox"
-            {...register('isTimeGame')}
-            onChange={handleCheckboxChange}
+      <FieldsContainer>
+        <LabelContainer>
+          <Title>Volume</Title>
+          <CustomRange
+            type="range"
+            id="volume"
+            {...register('volume')}
+            rangeValue={rangeValue}
+            onInput={handleVolumeChange}
+            min={0}
+            max={100}
           />
-          <SwitchToggle />
-        </LabelToggle>
-      </LabelContainer>
-      <LabelContainer>
-        <Title>Time to answer</Title>
-        <DurationFieldContainer>
-          <SetNumberBtn onClick={subtractTime} />
-          <CustomNumberInput
-            type="number"
-            readOnly
-            {...register('duration', {
-              min: 10,
-              max: 60,
-            })}
-            id="duration"
-          />
-          <SetMoreBtn onClick={addTime} />
-        </DurationFieldContainer>
-      </LabelContainer>
+          <VolumeBtnContainer>
+            <BtnMute onClick={mute} />
+            <BtnVolume onClick={setMax} />
+          </VolumeBtnContainer>
+        </LabelContainer>
+        <LabelContainer>
+          <Title>Time game</Title>
+          <LabelToggle>
+            <span>{checkboxValue ? 'On' : 'Off'}</span>
+            <InputToggle
+              type="checkbox"
+              {...register('isTimeGame')}
+              onChange={handleCheckboxChange}
+            />
+            <SwitchToggle />
+          </LabelToggle>
+        </LabelContainer>
+        <LabelContainer>
+          <Title>Time to answer</Title>
+          <DurationFieldContainer>
+            <SetNumberBtn onClick={subtractTime} />
+            <CustomNumberInput
+              type="number"
+              readOnly
+              {...register('duration', {
+                min: 10,
+                max: 60,
+              })}
+              id="duration"
+            />
+            <SetMoreBtn onClick={addTime} />
+          </DurationFieldContainer>
+        </LabelContainer>
+      </FieldsContainer>
       <BtnContainer>
-        <button onClick={setDefaultValues}>default</button>
-        <button type="submit">save</button>
+        <FormBtn accent={false} onClick={setDefaultValues}>
+          Default
+        </FormBtn>
+        <FormBtn accent={true} type="submit">
+          Save
+        </FormBtn>
       </BtnContainer>
     </form>
   );
