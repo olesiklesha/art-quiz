@@ -12,7 +12,7 @@ const SettingsHeader = () => {
 
   return (
     <Header>
-      <BtnBack onClick={goBack} />
+      <BtnBack onClick={goBack} isSet={true} />
       <Title>Settings</Title>
     </Header>
   );

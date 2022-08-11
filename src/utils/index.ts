@@ -1,4 +1,4 @@
-import { ANS_QUANTITY, DEFAULT_SETTINGS, LS, MAX_VOL, PIC_QUANTITY } from '../constants';
+import { ANS_QUANTITY, DEFAULT_SETTINGS, LS, MAX_VOL, PIC_QUANTITY, Variant } from '../constants';
 import artistData from '../data/artistData.json';
 import pictureData from '../data/pictureData.json';
 import { GlobalState } from '../store';
@@ -7,7 +7,7 @@ import data from '../data/AppData.json';
 import correctAudio from '../assets/audio/correct.mp3';
 import wrongAudio from '../assets/audio/wrong.mp3';
 
-const { all: picturesData } = data as IAppData;
+const { all: picturesData, pic, art } = data as IAppData;
 
 export const initState = (): GlobalState => {
   const storageState = window.localStorage.getItem(LS);
@@ -60,4 +60,20 @@ export const playAudio = (isCorrect: boolean, volume: number) => {
   player.volume = volume / MAX_VOL;
   player.src = isCorrect ? correctAudio : wrongAudio;
   player.play();
+};
+
+export const getCurrentRoundData = (round: string, variant: string) => {
+  if (variant === Variant.ART) return art[round];
+  return pic[round];
+};
+
+export const getGameResult = (state: GlobalState, round: string, variant: string) => {
+  const { artists, pictures } = state;
+  const index = +round.split('-')[0] - 1;
+
+  if (variant === Variant.PIC) {
+    return pictures[index].solved;
+  } else {
+    return artists[index].solved;
+  }
 };

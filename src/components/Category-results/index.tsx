@@ -12,7 +12,7 @@ interface ResultsProps {
 const CategoryResults: FC<ResultsProps> = ({ data, category }) => {
   return (
     <>
-      <Title>{category === Variant.ART ? 'Artist rounds' : 'Picture rounds'}</Title>
+      <Title>{category === Variant.ART ? 'Artist quizzes' : 'Picture quizzes'}</Title>
       <Container>
         {data.map((el) => (
           <CategoryCard

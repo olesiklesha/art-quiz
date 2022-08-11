@@ -1,27 +1,19 @@
 import React, { FC, useCallback, useContext, useReducer, useState } from 'react';
-import { GameDialogProps, IAppData } from '../../models';
+import { GameDialogProps } from '../../models';
 import { AnswerResultWindow, GameResultWindow, GameRound, Modal } from '..';
-import appData from '../../data/AppData.json';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
 import { Wrapper } from './styles';
 import { GlobalActionKind, GlobalContext } from '../../store';
 import { GameActionKind, gameReducer } from './helper';
-import { playAudio } from '../../utils';
-
-const { art, pic } = appData as IAppData;
-
-const getInitialGameState = (round: string, variant: string) => {
-  if (variant === Variant.ART) return art[round];
-  return pic[round];
-};
+import { getCurrentRoundData, playAudio } from '../../utils';
 
 const GameDialog: FC<GameDialogProps> = ({ round }) => {
   const variant = round.split('-').slice(-1).join('');
   const [gameState, gameDispatch] = useReducer(gameReducer, {
     answersState: [],
     roundNumber: 0,
-    roundsState: getInitialGameState(round, variant),
+    roundsState: getCurrentRoundData(round, variant),
     isTimerActive: true,
   });
 

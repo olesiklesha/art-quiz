@@ -22,10 +22,14 @@ const SmallIconBtn = styled(IconBtn)`
   height: 28px;
 `;
 
-export const BtnBack = styled(IconBtn)`
-  position: absolute;
-  top: 0;
-  left: 0;
+interface BtnBackProps {
+  isSet: boolean;
+}
+
+export const BtnBack = styled(IconBtn)<BtnBackProps>`
+  position: ${(p) => (p.isSet ? 'absolute' : 'static')};
+  top: ${(p) => (p.isSet ? '0' : 'auto')};
+  left: ${(p) => (p.isSet ? '0' : 'auto')};
   background-image: url(${iconBack});
 `;
 
