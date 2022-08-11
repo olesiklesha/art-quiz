@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Container } from '../Categories/styles';
 import { GlobalContext } from '../../store';
 import { CategoryResults } from '../../components';
 import { Variant } from '../../constants';
+import { Wrapper } from './styles';
 
 const Results = () => {
   const [{ artists, pictures }] = useContext(GlobalContext);
@@ -10,7 +10,7 @@ const Results = () => {
   const picData = pictures.filter((el) => !el.isNew);
 
   return (
-    <Container>
+    <Wrapper>
       {artData.length || picData.length ? (
         <>
           {artData.length > 0 && <CategoryResults data={artData} category={Variant.ART} />}
@@ -19,7 +19,7 @@ const Results = () => {
       ) : (
         <p>you did not finish any round</p>
       )}
-    </Container>
+    </Wrapper>
   );
 };
 
