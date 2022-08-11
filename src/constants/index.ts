@@ -29,3 +29,9 @@ export const DEFAULT_SETTINGS: ISettings = Object.freeze({
   duration: 20,
   volume: 50,
 });
+
+export const MAX_VOL = 100;
+
+export const MAX_DUR = 60;
+export const MIN_DUR = 20;
+export const DUR_STEP = 5;

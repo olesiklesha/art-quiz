@@ -66,10 +66,15 @@ function globalReducer(state: GlobalState, action: GlobalAction) {
 
     case GlobalActionKind.UPDATE_SETT_STATE:
       const { isTimeGame, volume, duration } = payload as ISettings;
-      return {
+
+      const newState = {
         ...state,
         settings: { isTimeGame, volume, duration },
       };
+
+      window.localStorage.setItem(LS, JSON.stringify(newState));
+
+      return newState;
 
     default:
       return state;

@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import { GlobalActionKind, GlobalContext } from '../../store';
 import { useForm } from 'react-hook-form';
 import { ISettings } from '../../models';
-import { DEFAULT_SETTINGS } from '../../constants';
+import { DEFAULT_SETTINGS, DUR_STEP, MAX_DUR, MAX_VOL, MIN_DUR } from '../../constants';
 import {
   BtnContainer,
   CustomNumberInput,
@@ -49,7 +49,17 @@ const SettingsForm = () => {
     setValue('isTimeGame', isTimeGame);
     setValue('duration', duration);
     setValue('volume', volume);
-  }, [setValue]);
+    setRangeValue(volume);
+
+    dispatch({
+      type: GlobalActionKind.UPDATE_SETT_STATE,
+      payload: {
+        duration,
+        volume,
+        isTimeGame,
+      },
+    });
+  }, [setValue, setRangeValue, dispatch]);
 
   const mute = useCallback(() => {
     setRangeValue(0);
@@ -57,21 +67,21 @@ const SettingsForm = () => {
   }, [setValue]);
 
   const setMax = useCallback(() => {
-    setRangeValue(100);
-    setValue('volume', 100);
+    setRangeValue(MAX_VOL);
+    setValue('volume', MAX_VOL);
   }, [setValue]);
 
   const addTime = useCallback(() => {
     const prev = getValues('duration');
-    if (prev < 60) {
-      setValue('duration', prev + 5);
+    if (prev < MAX_DUR) {
+      setValue('duration', prev + DUR_STEP);
     }
   }, [getValues, setValue]);
 
   const subtractTime = useCallback(() => {
     const prev = getValues('duration');
-    if (prev > 20) {
-      setValue('duration', prev - 5);
+    if (prev > MIN_DUR) {
+      setValue('duration', prev - DUR_STEP);
     }
   }, [getValues, setValue]);
 
@@ -87,7 +97,7 @@ const SettingsForm = () => {
             rangeValue={rangeValue}
             onInput={handleVolumeChange}
             min={0}
-            max={100}
+            max={MAX_VOL}
           />
           <VolumeBtnContainer>
             <BtnMute onClick={mute} />
@@ -114,8 +124,8 @@ const SettingsForm = () => {
               type="number"
               readOnly
               {...register('duration', {
-                min: 10,
-                max: 60,
+                min: MIN_DUR,
+                max: MAX_DUR,
               })}
               id="duration"
             />

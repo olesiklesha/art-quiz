@@ -70,7 +70,6 @@ export const DurationFieldContainer = styled(VolumeBtnContainer)`
 
 export const BtnContainer = styled(DurationFieldContainer)`
   gap: 1rem;
-  transition: 0.3s ease-in-out;
 
   @media (min-width: 720px) {
     justify-content: center;
@@ -110,6 +109,7 @@ export const SwitchToggle = styled.div`
   border-radius: 190px;
   background-color: #9b8080;
   padding: 4px;
+  transition: all 0.3s ease-in-out;
 
   &::before {
     content: '';
@@ -121,6 +121,7 @@ export const SwitchToggle = styled.div`
     left: 4px;
     background-color: #fff;
     transform: translate(0, -50%);
+    transition: all 0.3s ease-in-out;
   }
 `;
 
@@ -196,6 +197,12 @@ export const SetMoreBtn = styled(SetNumberBtn)`
 export const FormBtn = styled(ActionBtn)`
   color: ${(p) => (p.accent ? '#000' : '#fff')};
   border: ${(p) => (p.accent ? '1px solid transparent' : '1px solid #fff')};
+
+  &:hover {
+    color: ${(p) => (p.accent ? '#FFBCA2' : '#000')};
+    background-color: ${(p) => (p.accent ? 'transparent' : '#fff')};
+    border: ${(p) => (p.accent ? '1px solid #FFBCA2' : '1px solid #000')};
+  }
 
   @media (min-width: 720px) {
     max-width: 287px;
