@@ -7,6 +7,7 @@ export enum AppRoutes {
   PIC = '/app/picture-quiz',
   GAME = '/app/quiz/:id',
   RESULTS = '/app/results',
+  RESULT = '/app/results/:id',
   ERROR = '*',
   SETTINGS = 'settings',
 }

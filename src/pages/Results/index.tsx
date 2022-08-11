@@ -3,6 +3,7 @@ import { GlobalContext } from '../../store';
 import { CategoryResults } from '../../components';
 import { Variant } from '../../constants';
 import { Wrapper } from './styles';
+import { Title } from '../../components/Category-results/styles';
 
 const Results = () => {
   const [{ artists, pictures }] = useContext(GlobalContext);
@@ -17,7 +18,7 @@ const Results = () => {
           {picData.length > 0 && <CategoryResults data={picData} category={Variant.PIC} />}
         </>
       ) : (
-        <p>you did not finish any round</p>
+        <Title>you did not finish any round</Title>
       )}
     </Wrapper>
   );

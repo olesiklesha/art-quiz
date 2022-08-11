@@ -17,8 +17,32 @@ const Categories = () => {
 
   return (
     <Container>
-      {path === AppRoutes.PIC && pictures.map((el) => <CategoryCard {...el} key={el.game} />)}
-      {path === AppRoutes.ART && artists.map((el) => <CategoryCard {...el} key={el.game} />)}
+      {path === AppRoutes.PIC &&
+        pictures.map((el) => (
+          <CategoryCard
+            name={el.name}
+            done={el.done}
+            isNew={el.isNew}
+            src={el.src}
+            game={el.game}
+            isResult={false}
+            solved={el.solved}
+            key={el.game}
+          />
+        ))}
+      {path === AppRoutes.ART &&
+        artists.map((el) => (
+          <CategoryCard
+            name={el.name}
+            done={el.done}
+            isNew={el.isNew}
+            src={el.src}
+            game={el.game}
+            isResult={false}
+            solved={el.solved}
+            key={el.game}
+          />
+        ))}
     </Container>
   );
 };

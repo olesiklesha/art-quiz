@@ -17,6 +17,7 @@ export const Container = styled.div`
   align-content: flex-start;
   row-gap: 20px;
   width: 100%;
+  margin-bottom: 20px;
 
   @media (min-width: 680px) {
     row-gap: 25px;

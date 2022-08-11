@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './constants';
-import { Categories, ErrorPage, Game, Main, Results, Settings } from './pages';
+import { Categories, ErrorPage, Game, Main, Results, Settings, Result } from './pages';
 import { AppOutlet } from './components';
 
 const App = () => {
@@ -12,6 +12,7 @@ const App = () => {
         <Route path={AppRoutes.ART} element={<Categories />} />
         <Route path={AppRoutes.PIC} element={<Categories />} />
         <Route path={AppRoutes.RESULTS} element={<Results />} />
+        <Route path={AppRoutes.RESULT} element={<Result />} />
       </Route>
       <Route path={AppRoutes.GAME} element={<Game />} />
       <Route path={AppRoutes.SETTINGS} element={<Settings />} />
