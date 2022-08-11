@@ -20,6 +20,7 @@ import {
   VolumeBtnContainer,
 } from './styles';
 import { BtnMute, BtnVolume } from '../../styles';
+import { playAudio } from '../../utils';
 
 const SettingsForm = () => {
   const [{ settings }, dispatch] = useContext(GlobalContext);
@@ -31,6 +32,7 @@ const SettingsForm = () => {
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRangeValue(Number(e.currentTarget.value));
+    playAudio(true, Number(e.currentTarget.value));
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

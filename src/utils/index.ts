@@ -1,9 +1,11 @@
-import { ANS_QUANTITY, DEFAULT_SETTINGS, LS, PIC_QUANTITY } from '../constants';
+import { ANS_QUANTITY, DEFAULT_SETTINGS, LS, MAX_VOL, PIC_QUANTITY } from '../constants';
 import artistData from '../data/artistData.json';
 import pictureData from '../data/pictureData.json';
 import { GlobalState } from '../store';
 import { IAppData, ICategory } from '../models';
 import data from '../data/AppData.json';
+import correctAudio from '../assets/audio/correct.mp3';
+import wrongAudio from '../assets/audio/wrong.mp3';
 
 const { all: picturesData } = data as IAppData;
 
@@ -51,4 +53,11 @@ const getNumberArray = (num: number) => {
 export const getAnswerOptions = (num: number) => {
   const arr = getNumberArray(num);
   return shuffle(arr);
+};
+
+export const playAudio = (isCorrect: boolean, volume: number) => {
+  const player = new Audio();
+  player.volume = volume / MAX_VOL;
+  player.src = isCorrect ? correctAudio : wrongAudio;
+  player.play();
 };

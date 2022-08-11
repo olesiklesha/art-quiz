@@ -7,6 +7,7 @@ import { AppRoutes, R_QUANTITY, Variant } from '../../constants';
 import { Wrapper } from './styles';
 import { GlobalActionKind, GlobalContext } from '../../store';
 import { GameActionKind, gameReducer } from './helper';
+import { playAudio } from '../../utils';
 
 const { art, pic } = appData as IAppData;
 
@@ -26,7 +27,7 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   const { roundNumber, answersState, roundsState, isTimerActive } = gameState;
 
-  const [, dispatch] = useContext(GlobalContext);
+  const [{ settings }, dispatch] = useContext(GlobalContext);
   const [isOpened, setIsOpened] = useState(false);
   const [isResultOpened, setResultOpened] = useState(false);
   const navigate = useNavigate();
@@ -69,14 +70,18 @@ const GameDialog: FC<GameDialogProps> = ({ round }) => {
 
   const checkAnswer = useCallback(
     (answer: string, correctAnswer: string) => {
+      const ans = answer === correctAnswer;
+      const { volume } = settings;
+
       gameDispatch({
         type: GameActionKind.SET_ANS_STATE,
-        payload: answer === correctAnswer,
+        payload: ans,
       });
       setIsOpened(true);
+      playAudio(ans, volume);
       toggleIsTimerActive();
     },
-    [toggleIsTimerActive]
+    [toggleIsTimerActive, settings]
   );
 
   const handleCloseModal = () => {
