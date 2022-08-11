@@ -13,9 +13,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-content: flex-start;
-  row-gap: 20px;
+  gap: 20px;
   width: 100%;
   margin-bottom: 20px;
 
@@ -24,6 +23,11 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1024px) {
+    width: 884px;
     row-gap: 50px;
+  }
+
+  @media (min-width: 1440px) {
+    width: calc(1100 / 1300 * 100%);
   }
 `;
