@@ -34,6 +34,7 @@ export const AppNav = styled.nav`
   width: 100%;
   border: 1px solid #fff;
   border-radius: 20px 20px 0 0;
+  z-index: 123;
 
   @media (min-width: 680px) {
     position: static;

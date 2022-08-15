@@ -18,7 +18,7 @@ const Results = () => {
           {picData.length > 0 && <CategoryResults data={picData} category={Variant.PIC} />}
         </>
       ) : (
-        <Title>you did not finish any round</Title>
+        <Title>You did not finish any round</Title>
       )}
     </Wrapper>
   );
